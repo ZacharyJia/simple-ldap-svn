@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  svn:
+    build: .
+    ports:
+      - "8100:80"
+    volumes:
+      - ./data:/data
+    environment:
+      - APACHE_LDAP_AUTH_URL="ldap://ldap.example.com:389/ou=zx403,dc=net?uid?sub?(objectClass=*)"
+      - LDAP_BIND_DN="cn=admin,dc=example,dc=com"
+      - LDAP_BIND_PASSWORD="your password here"
+      - LDAP_AUTH_NAME="Example LDAP Authentication"
